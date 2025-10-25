@@ -32,7 +32,7 @@ Exit – Quit the program safely.
 
 Clone this repository:
 
-git clone https://github.com/Abdulwasaytahir/simple-expense-tracker.git
+git clone https://github.com/Abdulwasaytahir/Expense_Tracker.git
 
 
 Navigate to the project folder:
