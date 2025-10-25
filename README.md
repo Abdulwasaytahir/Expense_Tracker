@@ -1,85 +1,55 @@
 # Expense_Tracker
-🧾 Simple Personal Expense Tracker (Python)
+# Simple Personal Expense Tracker
 
-A beginner-friendly command-line expense tracker written in Python.
-This simple program allows users to add, view, and delete personal expenses — all directly from the terminal.
+expenses = []
 
-🚀 Features
+def add_expense():
+    name = input("Expense name: ")
+    amount = float(input("Amount (PKR): "))
+    expenses.append({"name": name, "amount": amount})
+    print(f"Added: {name} - Rs.{amount}\n")
 
-✅ Add new expenses with name and amount
+def show_expenses():
+    if not expenses:
+        print("No expenses recorded yet.\n")
+        return
+    print("\n------ Your Expenses ------")
+    total = 0
+    for i, e in enumerate(expenses, start=1):
+        print(f"{i}. {e['name']} - Rs.{e['amount']}")
+        total += e['amount']
+    print("----------------------------")
+    print(f"Total Spent: Rs.{total}\n")
 
-📋 View a complete list of all recorded expenses
+def delete_expense():
+    show_expenses()
+    if not expenses:
+        return
+    try:
+        index = int(input("Enter expense number to delete: ")) - 1
+        deleted = expenses.pop(index)
+        print(f"Deleted: {deleted['name']} - Rs.{deleted['amount']}\n")
+    except (ValueError, IndexError):
+        print("Invalid choice!\n")
 
-❌ Delete any expense by its list number
+while True:
+    print("=== Expense Tracker Menu ===")
+    print("1. Add Expense")
+    print("2. Show All Expenses")
+    print("3. Delete Expense")
+    print("4. Exit")
 
-💰 Automatically calculates total spending
+    choice = input("Choose an option (1-4): ")
 
-🧠 Simple and easy-to-understand code — perfect for Python beginners
+    if choice == "1":
+        add_expense()
+    elif choice == "2":
+        show_expenses()
+    elif choice == "3":
+        delete_expense()
+    elif choice == "4":
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid option! Try again.\n")
 
-🧩 How It Works
-
-The program uses a list to store expense dictionaries (each containing a name and amount).
-It provides a text-based menu with four main options:
-
-Add Expense – Enter an expense name and amount.
-
-Show All Expenses – View all expenses along with the total.
-
-Delete Expense – Remove any expense by selecting its number.
-
-Exit – Quit the program safely.
-
-💻 How to Run
-
-Clone this repository:
-
-git clone https://github.com/Abdulwasaytahir/simple-expense-tracker.git
-
-
-Navigate to the project folder:
-
-cd simple-expense-tracker
-
-
-Run the program:
-
-python expense_tracker.py
-
-🧠 Example Output
-=== Expense Tracker Menu ===
-1. Add Expense
-2. Show All Expenses
-3. Delete Expense
-4. Exit
-Choose an option (1-4): 1
-Expense name: Food
-Amount (PKR): 250
-Added: Food - Rs.250
-
-📚 Concepts Used
-
-Lists and Dictionaries
-
-Functions in Python
-
-Loops and Conditionals
-
-Basic Input/Output handling
-
-Exception Handling
-
-🌱 Future Improvements
-
-Save expenses to a file (so data isn’t lost after closing)
-
-Add categories (e.g., Food, Transport, Bills)
-
-Generate monthly spending reports
-
-Add a simple GUI using Tkinter or a web interface (Flask/Streamlit)
-
-🧑‍💻 Author
-
-Abdul Wasay Tahir
-💼 Aspiring Software Engineer | Robotics & Programming Enthusiast 
-📧 abdulwasaytahir01@gmail.com
